@@ -4,12 +4,8 @@ import { ListGroup, ListGroupItem } from "reactstrap";
 export default class CategoryList extends Component {
   state = {
     categories: [
-      { CategoryId: 1, CategoryName: "Arabalar" },
-      { CategoryId: 2, CategoryName: "Satılık Evler" },
-      { CategoryId: 3, CategoryName: "Kiralık Daireler" },
-      { CategoryId: 4, CategoryName: "Ev Eşyaları" },
-      { CategoryId: 5, CategoryName: "Bahçe Malzemeleri" },
-      { CategoryId: 6, CategoryName: "Veri Türleri" },
+      { CategoryId: 1, CategoryName: "Beverages" },
+      { CategoryId: 2, CategoryName: "Condiments" },
     ],
   };
 
