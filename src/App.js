@@ -4,8 +4,8 @@ import Navi from "./Navi";
 import ProductList from "./ProductList";
 
 function App() {
-  let categoryInfo = { title: "Category List" };
   let productInfo = { title: "Product List" };
+  let categoryInfo = { title: "Category List" };
   return (
     <div>
       <Container>
