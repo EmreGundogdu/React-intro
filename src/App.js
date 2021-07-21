@@ -5,7 +5,12 @@ import Navi from "./Navi";
 import ProductList from "./ProductList";
 
 export default class App extends Component {
-
+  state = {
+    currentCategory: ""
+  }
+  changeCategory = (category) => {
+    this.setState({ currentCategory: category.CategoryName })
+  };
   render() {
     let productInfo = { title: "Product List" };
     let categoryInfo = { title: "Category List" };
@@ -17,10 +22,10 @@ export default class App extends Component {
           </Row>
           <Row>
             <Col xs="4">
-              <CategoryList info={categoryInfo} />
+              <CategoryList currentCategory={this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
             <Col xs="8">
-              <ProductList info={productInfo} />
+              <ProductList currentCategory={this.state.currentCategory} info={productInfo} />
             </Col>
           </Row>
         </Container>
