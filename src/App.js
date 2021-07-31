@@ -6,10 +6,17 @@ import ProductList from "./ProductList";
 
 export default class App extends Component {
   state = {
-    currentCategory: ""
-  }
+    currentCategory: "",
+    products: []
+  };
+  componentDidMount() {
+    this.getProducts();
+  };
   changeCategory = (category) => {
-    this.setState({ currentCategory: category.CategoryName });
+    this.setState({ currentCategory: category.categoryName });
+  };
+  getProducts = () => {
+    fetch("http://localhost:3000/products").then(response => response.json()).then(data => this.setState({ products: data }));
   };
   render() {
     let productInfo = { title: "Product List" };
@@ -21,11 +28,11 @@ export default class App extends Component {
             <Navi />
           </Row>
           <Row>
-            <Col xs="4">
+            <Col xs="3">
               <CategoryList currentCategory={this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
-            <Col xs="8">
-              <ProductList currentCategory={this.state.currentCategory} info={productInfo} />
+            <Col xs="9">
+              <ProductList products={this.state.products} currentCategory={this.state.currentCategory} info={productInfo} />
             </Col>
           </Row>
         </Container>
