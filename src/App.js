@@ -7,7 +7,8 @@ import ProductList from "./ProductList";
 export default class App extends Component {
   state = {
     currentCategory: "",
-    products: []
+    products: [],
+    cart: []
   };
   componentDidMount() {
     this.getProducts();
@@ -23,21 +24,30 @@ export default class App extends Component {
     }
     fetch(url).then(response => response.json()).then(data => this.setState({ products: data }));
   };
+  addToCart = (product) => {
+    let newCart = this.state.cart;
+    var addedItem = newCart.find(x => x.product.id === product.id);
+    if (addedItem) {
+      addedItem.quantity += 1;
+    } else {
+      newCart.push({ product: product, quantity: 1 });
+    }
+
+    this.setState({ cart: newCart });
+  }
   render() {
     let productInfo = { title: "Product List" };
     let categoryInfo = { title: "Category List" };
     return (
       <div>
         <Container>
-          <Row>
-            <Navi />
-          </Row>
+          <Navi cart={this.state.cart} />
           <Row>
             <Col xs="3">
               <CategoryList currentCategory={this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
             </Col>
             <Col xs="9">
-              <ProductList products={this.state.products} currentCategory={this.state.currentCategory} info={productInfo} />
+              <ProductList addToCart={this.addToCart} products={this.state.products} currentCategory={this.state.currentCategory} info={productInfo} />
             </Col>
           </Row>
         </Container>
