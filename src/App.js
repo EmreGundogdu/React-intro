@@ -14,9 +14,14 @@ export default class App extends Component {
   };
   changeCategory = (category) => {
     this.setState({ currentCategory: category.categoryName });
+    this.getProducts(category.id);
   };
-  getProducts = () => {
-    fetch("http://localhost:3000/products").then(response => response.json()).then(data => this.setState({ products: data }));
+  getProducts = (categoryId) => {
+    let url = "http://localhost:3000/products";
+    if (categoryId) {
+      url += "?categoryId=" + categoryId;
+    }
+    fetch(url).then(response => response.json()).then(data => this.setState({ products: data }));
   };
   render() {
     let productInfo = { title: "Product List" };
