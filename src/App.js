@@ -35,7 +35,7 @@ export default class App extends Component {
     }
 
     this.setState({ cart: newCart });
-    alertify.success(product.productName + " Added To Cart");
+    alertify.success(product.productName + " Added To Cart", 1);
   }
   removeFromCart = (product) => {
     let newCart = this.state.cart.filter(c => c.product.id !== product.id)
