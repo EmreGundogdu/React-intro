@@ -5,13 +5,17 @@ export default class FormDemo1 extends Component {
   onChangeHandler = (e) => {
     this.setState({ userName: e.target.value });
   };
+  onSubmitHandler = (e) => {
+    alert(this.state.userName);
+  };
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.onChangeHandler}>
           <h3>User Name</h3>
           <input onChange={this.onChangeHandler} typye="text"></input>
           <h3>User Name is {this.state.userName}</h3>
+          <input type="submit" value="Save"></input>
         </form>
       </div>
     );
