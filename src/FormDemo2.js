@@ -17,6 +17,9 @@ export default class FormDemo2 extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     alertify.success(this.state.email + " Added To Db");
+    alertify.success(this.state.password + " Added To Db");
+    alertify.success(this.state.city + " Added To Db");
+    alertify.success(this.state.description + " Added To Db");
   };
   render() {
     return (
