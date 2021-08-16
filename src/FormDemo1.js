@@ -6,6 +6,7 @@ export default class FormDemo1 extends Component {
     this.setState({ userName: e.target.value });
   };
   onSubmitHandler = (e) => {
+    e.preventDefault();
     alert(this.state.userName);
   };
   render() {
