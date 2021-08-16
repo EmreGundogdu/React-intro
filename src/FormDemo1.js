@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
 export default class FormDemo1 extends Component {
-  state = { userName: "" };
+  state = { userName: "", city: "" };
   onChangeHandler = (e) => {
-    this.setState({ userName: e.target.value });
+    //this.setState({ userName: e.target.value });
+    let name = e.target.name;
+    let value = e.target.value;
+    this.setState({ [name]: value });
   };
   onSubmitHandler = (e) => {
     e.preventDefault();
@@ -14,8 +17,20 @@ export default class FormDemo1 extends Component {
       <div>
         <form onSubmit={this.onChangeHandler}>
           <h3>User Name</h3>
-          <input onChange={this.onChangeHandler} typye="text"></input>
+          <input
+            name="userName"
+            onChange={this.onChangeHandler}
+            typye="text"
+          ></input>
           <h3>User Name is {this.state.userName}</h3>
+          <h3>City</h3>
+          <input
+            name="city"
+            onChange={this.onChangeHandler}
+            typye="text"
+          ></input>
+          <h3>City is {this.state.city}</h3>
+
           <input type="submit" value="Save"></input>
         </form>
       </div>
